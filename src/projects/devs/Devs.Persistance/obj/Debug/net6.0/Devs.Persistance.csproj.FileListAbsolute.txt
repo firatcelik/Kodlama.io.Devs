@@ -1,0 +1,12 @@
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\bin\Debug\net6.0\Devs.Persistance.deps.json
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\bin\Debug\net6.0\Devs.Persistance.dll
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\bin\Debug\net6.0\Devs.Persistance.pdb
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\obj\Debug\net6.0\Devs.Persistance.csproj.AssemblyReference.cache
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\obj\Debug\net6.0\Devs.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\obj\Debug\net6.0\Devs.Persistance.AssemblyInfoInputs.cache
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\obj\Debug\net6.0\Devs.Persistance.AssemblyInfo.cs
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\obj\Debug\net6.0\Devs.Persistance.csproj.CoreCompileInputs.cache
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\obj\Debug\net6.0\Devs.Persistance.dll
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\obj\Debug\net6.0\refint\Devs.Persistance.dll
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\obj\Debug\net6.0\Devs.Persistance.pdb
+C:\Users\FiratCelik\source\repos\temp\CodeCamp\Kodlama.io.Devs\src\projects\devs\Devs.Persistance\obj\Debug\net6.0\ref\Devs.Persistance.dll
