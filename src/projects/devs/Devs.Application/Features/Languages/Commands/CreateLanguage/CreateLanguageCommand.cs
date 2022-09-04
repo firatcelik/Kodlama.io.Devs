@@ -32,7 +32,7 @@ namespace Devs.Application.Features.Languages.Commands.CreateLanguage
             public async Task<CreatedLanguageDto> Handle(CreateLanguageCommand request, CancellationToken cancellationToken)
             {
                 //TODO : check only one language can add to table
-                await _languageBusinessRules.LanguageCanNotBeDuplicatedWhenInserted(request.Name);
+                await _languageBusinessRules.LanguageCanNotBeDuplicatedWhenInsertedOrUpdated(request.Name);
 
                 var mappedLanguage = _mapper.Map<Language>(request);
                 var createdLanguage= await _languageRepository.AddAsync(mappedLanguage);

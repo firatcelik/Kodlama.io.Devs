@@ -17,9 +17,13 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
         Context = context;
     }
 
-    public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate)
+    public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate, bool enableTracking = true)
     {
-        return await Context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+        var result = await Context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+
+        if (result != null && !enableTracking)
+            Context.Entry(result).State = EntityState.Detached;
+        return result;
     }
 
     public async Task<IPaginate<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate = null,
