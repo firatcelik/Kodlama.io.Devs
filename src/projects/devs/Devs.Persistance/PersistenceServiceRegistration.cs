@@ -4,6 +4,7 @@ using Devs.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace Devs.Persistence
                                                      options.UseSqlServer(
                                                          configuration.GetConnectionString("ProgrammingLanguageDbConnectionString")));
             services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<ITechnologyRepository, TechnologyRepository>();
 
             return services;
         }

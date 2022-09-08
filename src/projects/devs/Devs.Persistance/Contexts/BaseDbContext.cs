@@ -16,6 +16,8 @@ namespace Devs.Persistence.Contexts
         protected IConfiguration Configuration { get; set; }
         public DbSet<Language> Languages { get; set; }
 
+        public DbSet<Technology> Technologies { get; set; }
+
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
             Configuration = configuration;
@@ -31,6 +33,7 @@ namespace Devs.Persistence.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
+            modelBuilder.ApplyConfiguration(new TechnologyConfiguration());
             modelBuilder.SeedLanguage();
         }
 

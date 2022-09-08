@@ -9,14 +9,16 @@ using System.Threading.Tasks;
 
 namespace Devs.Persistence.Configuration
 {
-    internal class LanguageConfiguration : IEntityTypeConfiguration<Language>
+    internal class TechnologyConfiguration : IEntityTypeConfiguration<Technology>
     {
-        public void Configure(EntityTypeBuilder<Language> builder)
+        public void Configure(EntityTypeBuilder<Technology> builder)
         {
-            builder.ToTable("Languages").HasKey(k => k.Id);
+            builder.ToTable("Technologies").HasKey(k => k.Id);
+            builder.Property(p => p.LanguageId).HasColumnName("LanguageId");
             builder.Property(p => p.Id).HasColumnName("Id");
             builder.Property(p => p.Name).HasColumnName("Name");
-            builder.HasMany(p => p.Technologies);
+
+            builder.HasOne(p => p.Language);
         }
     }
 }
