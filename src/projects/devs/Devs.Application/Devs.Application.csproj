@@ -18,9 +18,5 @@
     <ProjectReference Include="..\..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
     <ProjectReference Include="..\Devs.Domain\Devs.Domain.csproj" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="Features\Technologies\Commands\DeleteTechnology\" />
-  </ItemGroup>
 
 </Project>

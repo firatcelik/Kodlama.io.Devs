@@ -28,5 +28,11 @@ namespace Devs.Application.Features.Technologies.Rules
         {
             if (technology == null) throw new BusinessException("Requested technology does not exist");
         }
+
+        internal void TechnologyShouldExistWhenDeleted(Technology? deletedTechnologyEntity)
+        {
+            if (deletedTechnologyEntity == null) throw new BusinessException("There is no programing technology to delete");
+        }
+      
     }
 }

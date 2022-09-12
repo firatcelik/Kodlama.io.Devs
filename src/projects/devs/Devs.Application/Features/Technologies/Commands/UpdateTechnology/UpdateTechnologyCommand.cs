@@ -15,8 +15,8 @@ namespace Devs.Application.Features.Technologies.Commands.UpdateTechnology
     public class UpdateTechnologyCommand : IRequest<UpdatedTechnologyDto>
     {
         public int Id { get; set; }
-        public int LanguageId { get; set; }
-        public string Name { get; set; }
+        public int? LanguageId { get; set; }
+        public string? Name { get; set; }
 
 
         public class UpdateTechnologyCommandHandler : IRequestHandler<UpdateTechnologyCommand, UpdatedTechnologyDto>
@@ -34,12 +34,15 @@ namespace Devs.Application.Features.Technologies.Commands.UpdateTechnology
 
             public async Task<UpdatedTechnologyDto> Handle(UpdateTechnologyCommand request, CancellationToken cancellationToken)
             {
-                await _technologyBusinessRules.TechnologyCanNotBeDuplicatedWhenInsertedOrUpdated(request.Name);
-                var mappedTechnology = _mapper.Map<Technology>(request);
-
                 var requestedLanguage = await _technologyRepository.GetAsync(x => x.Id == request.Id, enableTracking: false);
                 _technologyBusinessRules.TechnologyShouldExistWhenRequested(requestedLanguage);
 
+                if (request.LanguageId == null)
+                {
+                    request.LanguageId = requestedLanguage.LanguageId;
+                }
+
+                var mappedTechnology = _mapper.Map<Technology>(request);
                 var uploadedTechnogyEntity = await _technologyRepository.UpdateAsync(mappedTechnology);
                 var uploadeTechnologyDto = _mapper.Map<UpdatedTechnologyDto>(uploadedTechnogyEntity);
 

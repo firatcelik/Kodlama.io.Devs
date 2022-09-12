@@ -1,7 +1,8 @@
 ﻿using Core.Application.Requests;
 using Core.Persistence.Dynamic;
 using Devs.Application.Features.Languages.Commands.CreateLanguage;
-using Devs.Application.Features.Technologies.Commands.CreateLanguage;
+using Devs.Application.Features.Technologies.Commands.CreateTechnology;
+using Devs.Application.Features.Technologies.Commands.DeleteTechnology;
 using Devs.Application.Features.Technologies.Commands.UpdateTechnology;
 using Devs.Application.Features.Technologies.Dtos;
 using Devs.Application.Features.Technologies.Models;
@@ -46,6 +47,13 @@ namespace Devs.WebAPI.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateTechnologyCommand updateTechnolgyCommand)
         {
             UpdatedTechnologyDto result = await Mediator.Send(updateTechnolgyCommand);
+            return Ok(result);
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] DeleteTechnologyCommand deleteTechnologyCommand)
+        {
+            DeletedTechnologyDto result = await Mediator.Send(deleteTechnologyCommand);
             return Ok(result);
         }
     }

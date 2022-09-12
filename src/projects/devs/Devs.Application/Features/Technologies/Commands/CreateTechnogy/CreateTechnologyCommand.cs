@@ -5,7 +5,7 @@ using Devs.Application.Services.Repositories;
 using Devs.Domain.Entities;
 using MediatR;
 
-namespace Devs.Application.Features.Technologies.Commands.CreateLanguage
+namespace Devs.Application.Features.Technologies.Commands.CreateTechnology
 {
     public class CreateTechnologyCommand : IRequest<CreatedTechnologyDto>
     {

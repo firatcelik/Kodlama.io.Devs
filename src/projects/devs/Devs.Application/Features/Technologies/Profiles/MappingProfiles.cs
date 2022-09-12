@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Core.Persistence.Paging;
 using Devs.Application.Features.Languages.Commands.CreateLanguage;
-using Devs.Application.Features.Technologies.Commands.CreateLanguage;
+using Devs.Application.Features.Technologies.Commands.CreateTechnology;
+using Devs.Application.Features.Technologies.Commands.DeleteTechnology;
 using Devs.Application.Features.Technologies.Commands.UpdateTechnology;
 using Devs.Application.Features.Technologies.Dtos;
 using Devs.Application.Features.Technologies.Models;
@@ -29,6 +30,9 @@ namespace Devs.Application.Features.Technologies.Profiles
 
             CreateMap<Technology, UpdatedTechnologyDto>().ReverseMap();
             CreateMap<Technology, UpdateTechnologyCommand>().ReverseMap();
+
+            CreateMap<Technology, DeletedTechnologyDto>().ReverseMap();
+            CreateMap<Technology, DeleteTechnologyCommand>().ReverseMap();
         }
     }
 }
