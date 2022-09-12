@@ -26,15 +26,16 @@ public class ExceptionMiddleware
         }
     }
 
-    private Task HandleExceptionAsync(HttpContext context, Exception exception)
+    private async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         context.Response.ContentType = "application/json";
 
-        if (exception.GetType() == typeof(ValidationException)) return CreateValidationException(context, exception);
-        if (exception.GetType() == typeof(BusinessException)) return CreateBusinessException(context, exception);
-        if (exception.GetType() == typeof(AuthorizationException))
-            return CreateAuthorizationException(context, exception);
-        return CreateInternalException(context, exception);
+        if (exception.GetType() == typeof(ValidationException)) await  CreateValidationException(context, exception);
+        else if (exception.GetType() == typeof(BusinessException)) await CreateBusinessException(context, exception);
+        else if (exception.GetType() == typeof(AuthorizationException))
+            await CreateAuthorizationException(context, exception);
+        else
+        await CreateInternalException(context, exception);
     }
 
     private Task CreateAuthorizationException(HttpContext context, Exception exception)
@@ -51,11 +52,11 @@ public class ExceptionMiddleware
         }.ToString());
     }
 
-    private Task CreateBusinessException(HttpContext context, Exception exception)
+    private async Task CreateBusinessException(HttpContext context, Exception exception)
     {
         context.Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
 
-        return context.Response.WriteAsync(new BusinessProblemDetails
+        await context.Response.WriteAsync(new BusinessProblemDetails
         {
             Status = StatusCodes.Status400BadRequest,
             Type = "https://example.com/probs/business",
@@ -65,12 +66,12 @@ public class ExceptionMiddleware
         }.ToString());
     }
 
-    private Task CreateValidationException(HttpContext context, Exception exception)
+    private async Task CreateValidationException(HttpContext context, Exception exception)
     {
         context.Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
         object errors = ((ValidationException)exception).Errors;
 
-        return context.Response.WriteAsync(new ValidationProblemDetails
+        await context.Response.WriteAsync(new ValidationProblemDetails
         {
             Status = StatusCodes.Status400BadRequest,
             Type = "https://example.com/probs/validation",
@@ -81,11 +82,11 @@ public class ExceptionMiddleware
         }.ToString());
     }
 
-    private Task CreateInternalException(HttpContext context, Exception exception)
+    private async Task CreateInternalException(HttpContext context, Exception exception)
     {
         context.Response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
 
-        return context.Response.WriteAsync(new ProblemDetails
+        await context.Response.WriteAsync(new ProblemDetails
         {
             Status = StatusCodes.Status500InternalServerError,
             Type = "https://example.com/probs/internal",

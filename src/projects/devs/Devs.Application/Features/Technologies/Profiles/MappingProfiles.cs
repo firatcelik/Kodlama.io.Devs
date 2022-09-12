@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Core.Persistence.Paging;
+using Devs.Application.Features.Languages.Commands.CreateLanguage;
+using Devs.Application.Features.Technologies.Commands.CreateLanguage;
 using Devs.Application.Features.Technologies.Dtos;
 using Devs.Application.Features.Technologies.Models;
 using Devs.Domain.Entities;
@@ -19,6 +21,9 @@ namespace Devs.Application.Features.Technologies.Profiles
                 .ForMember(c=>c.LanguageName, opt=>opt.MapFrom(c=>c.Language.Name))
                 .ReverseMap();
             CreateMap<IPaginate<Technology>, TechnologyListModel>().ReverseMap();
+
+            CreateMap<Technology, CreatedTechnologyDto>().ReverseMap();
+            CreateMap<Technology, CreateTechnologyCommand>().ReverseMap();
         }
     }
 }

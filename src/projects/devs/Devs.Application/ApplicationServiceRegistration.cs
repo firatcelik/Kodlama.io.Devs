@@ -1,5 +1,7 @@
 ﻿using Core.Application.Pipelines.Validation;
+using Devs.Application.Features.Languages.Commands.CreateLanguage;
 using Devs.Application.Features.Languages.Rules;
+using Devs.Application.Features.Technologies.Rules;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +22,7 @@ namespace Devs.Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            //services.AddScoped<IValidator<CreateLanguageCommand>, CreateLanguageCommandValidator>();
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheRemovingBehavior<,>));
@@ -27,6 +30,7 @@ namespace Devs.Application
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             services.AddScoped<LanguageBusinessRules>();
+            services.AddScoped<TechnologyBusinessRules>();
 
             return services;
         }
