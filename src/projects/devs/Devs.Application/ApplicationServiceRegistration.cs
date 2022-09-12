@@ -1,7 +1,10 @@
-﻿using Core.Application.Pipelines.Validation;
+﻿using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Validation;
 using Devs.Application.Features.Languages.Commands.CreateLanguage;
 using Devs.Application.Features.Languages.Rules;
 using Devs.Application.Features.Technologies.Rules;
+using Devs.Application.Features.Users.Rules;
+using Devs.Application.Features.UserSocialMediaAddresses.Rules;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +26,7 @@ namespace Devs.Application
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             //services.AddScoped<IValidator<CreateLanguageCommand>, CreateLanguageCommandValidator>();
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheRemovingBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
@@ -31,6 +34,9 @@ namespace Devs.Application
 
             services.AddScoped<LanguageBusinessRules>();
             services.AddScoped<TechnologyBusinessRules>();
+
+            services.AddScoped<UserBusinessRules>();
+            services.AddScoped<UserSocialMediaAddressBusinessRules>();
 
             return services;
         }

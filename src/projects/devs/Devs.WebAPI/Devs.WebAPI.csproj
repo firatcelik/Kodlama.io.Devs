@@ -8,6 +8,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="MediatR" Version="10.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -22,6 +23,10 @@
 
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
+	</ItemGroup>
+	
 	<ItemGroup>
 	  <ProjectReference Include="..\Devs.Application\Devs.Application.csproj" />
 	  <ProjectReference Include="..\Devs.Persistance\Devs.Persistence.csproj" />

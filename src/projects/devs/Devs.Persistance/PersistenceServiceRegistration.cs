@@ -23,6 +23,9 @@ namespace Devs.Persistence
                                                          configuration.GetConnectionString("ProgrammingLanguageDbConnectionString")));
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<ITechnologyRepository, TechnologyRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
+            services.AddScoped<IUserSocialMediaAddressRepository, UserSocialMediaAddressRepository>();
 
             return services;
         }

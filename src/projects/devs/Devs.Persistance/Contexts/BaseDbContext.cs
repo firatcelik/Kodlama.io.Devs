@@ -1,4 +1,5 @@
-﻿using Devs.Domain.Entities;
+﻿using Core.Security.Entities;
+using Devs.Domain.Entities;
 using Devs.Persistence.Configuration;
 using Devs.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,14 @@ namespace Devs.Persistence.Contexts
 
         public DbSet<Technology> Technologies { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+
+        public DbSet<UserSocialMediaAddress> UserSocialMediaAddresses { get; set; }
+
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
             Configuration = configuration;
@@ -34,7 +43,14 @@ namespace Devs.Persistence.Contexts
         {
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
             modelBuilder.ApplyConfiguration(new TechnologyConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new OperationClaimConfiguration());
+            modelBuilder.ApplyConfiguration(new UserOperationClaimConfiguration());
+            modelBuilder.ApplyConfiguration(new UserSocialMediaAddressConfiguration());
+
             modelBuilder.SeedLanguage();
+            modelBuilder.SeedTechnology();
+            modelBuilder.SeedOperationClaim();
         }
 
     }
