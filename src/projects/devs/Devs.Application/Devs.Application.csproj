@@ -21,7 +21,6 @@
 	
   <ItemGroup>
     <Folder Include="Features\Technologies\Commands\DeleteTechnology\" />
-    <Folder Include="Features\Technologies\Commands\UpdateTechnology\" />
   </ItemGroup>
 
 </Project>

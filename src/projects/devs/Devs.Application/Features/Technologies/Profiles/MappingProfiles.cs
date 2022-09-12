@@ -2,6 +2,7 @@
 using Core.Persistence.Paging;
 using Devs.Application.Features.Languages.Commands.CreateLanguage;
 using Devs.Application.Features.Technologies.Commands.CreateLanguage;
+using Devs.Application.Features.Technologies.Commands.UpdateTechnology;
 using Devs.Application.Features.Technologies.Dtos;
 using Devs.Application.Features.Technologies.Models;
 using Devs.Domain.Entities;
@@ -24,6 +25,10 @@ namespace Devs.Application.Features.Technologies.Profiles
 
             CreateMap<Technology, CreatedTechnologyDto>().ReverseMap();
             CreateMap<Technology, CreateTechnologyCommand>().ReverseMap();
+
+
+            CreateMap<Technology, UpdatedTechnologyDto>().ReverseMap();
+            CreateMap<Technology, UpdateTechnologyCommand>().ReverseMap();
         }
     }
 }

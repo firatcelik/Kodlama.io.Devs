@@ -2,6 +2,7 @@
 using Core.Persistence.Dynamic;
 using Devs.Application.Features.Languages.Commands.CreateLanguage;
 using Devs.Application.Features.Technologies.Commands.CreateLanguage;
+using Devs.Application.Features.Technologies.Commands.UpdateTechnology;
 using Devs.Application.Features.Technologies.Dtos;
 using Devs.Application.Features.Technologies.Models;
 using Devs.Application.Features.Technologies.Queries.GetListTechnology;
@@ -39,6 +40,13 @@ namespace Devs.WebAPI.Controllers
         {
             CreatedTechnologyDto result = await Mediator.Send(createTechnologyCommand);
             return Created("", result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateTechnologyCommand updateTechnolgyCommand)
+        {
+            UpdatedTechnologyDto result = await Mediator.Send(updateTechnolgyCommand);
+            return Ok(result);
         }
     }
 }
