@@ -4,16 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Devs.WebAPI.Controllers;
 
-/// <summary>
-/// Kullanıcı için kontrolcüler.
-/// </summary>
+[Route("api/[controller]")]
+[ApiController]
 public class AuthController : BaseController
 {
-    /// <summary>
-    /// Kullanıcı kayıt işlemini yapar.
-    /// </summary>
-    /// <param name="registerUserCommand">Kullanıcı kayıt komutu.</param>
-    /// <returns>Kullanıcı kayıt işleminin sonucunu döndürür.</returns>
+   
     [HttpPost("Register")]
     public async Task<IActionResult> Register([FromBody] RegisterUserCommand registerUserCommand)
     {
@@ -21,11 +16,6 @@ public class AuthController : BaseController
         return Ok(result);
     }
 
-    /// <summary>
-    /// Kullanıcı giriş işlemini yapar.
-    /// </summary>
-    /// <param name="loginUserCommand">Kullanıcı giriş komutu.</param>
-    /// <returns>Kullanıcı giriş işleminin sonucunu döndürür.</returns>
     [HttpPost("Login")]
     public async Task<IActionResult> Login([FromBody] LoginUserCommand loginUserCommand)
     {
