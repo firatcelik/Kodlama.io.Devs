@@ -25,6 +25,8 @@ namespace Devs.Persistence.Contexts
 
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
+        public DbSet<RefreshToken>  RefreshTokens { get; set; }
+
         public DbSet<UserSocialMediaAddress> UserSocialMediaAddresses { get; set; }
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
@@ -41,12 +43,14 @@ namespace Devs.Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           // modelBuilder.MapLanguage().MapOperationClaim();
             modelBuilder.ApplyConfiguration(new LanguageConfiguration());
             modelBuilder.ApplyConfiguration(new TechnologyConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new OperationClaimConfiguration());
             modelBuilder.ApplyConfiguration(new UserOperationClaimConfiguration());
             modelBuilder.ApplyConfiguration(new UserSocialMediaAddressConfiguration());
+            modelBuilder.ApplyConfiguration(new RefreshTokenConfiguration());
 
             modelBuilder.SeedLanguage();
             modelBuilder.SeedTechnology();

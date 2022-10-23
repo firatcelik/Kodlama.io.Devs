@@ -1,5 +1,6 @@
 ﻿using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Validation;
+using Devs.Application.Features.Auths.Rules;
 using Devs.Application.Features.Languages.Commands.CreateLanguage;
 using Devs.Application.Features.Languages.Rules;
 using Devs.Application.Features.Technologies.Rules;
@@ -14,6 +15,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Devs.Application.Services.AuthService;
 
 namespace Devs.Application
 {
@@ -38,6 +40,9 @@ namespace Devs.Application
 
             services.AddScoped<UserBusinessRules>();
             services.AddScoped<UserSocialMediaAddressBusinessRules>();
+            services.AddScoped<AuthBusinessRules>();
+
+            services.AddScoped<IAuthService, AuthManager>();
 
             return services;
         }
